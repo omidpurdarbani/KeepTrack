@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using KeepTrack.Core.DTOs;
+using KeepTrack.DataLayer.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using KeepTrack.Core.DTOs;
-using KeepTrack.DataLayer.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -149,7 +149,7 @@ namespace KeepTrack.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, Active = true };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
