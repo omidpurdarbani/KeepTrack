@@ -1,0 +1,836 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "خانه";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>keeptrack - خانه</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/Content/assets/img/favicon.png" rel="icon">
+    <link href="/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet"> -->
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/Content/assets/font/vazir/font-face.css">
+
+    <!-- Vendor CSS Files -->
+    <link href="/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/Content/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: BizPage - v4.0.4
+    * Template URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+
+
+
+</head>
+
+<body dir="rtl">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-transparent">
+        <div class="container-fluid">
+
+            <div class="row justify-content-center">
+                <div class="col-xl-11 d-flex align-items-center">
+                    <h1 class="logo ms-auto"><a href="/">keeptrack</a></h1>
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    <!-- <a href="index.html" class="logo me-auto"><img src="/Content/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+                    <nav class="nav-menu d-none d-lg-block">
+                        <ul>
+                            <li class="active"><a href="/">خانه</a></li>
+                            @if (!Request.IsAuthenticated)
+                            {
+                                <li><a href="/#about">درباره ما</a></li>
+                                <li><a href="/#services">سرویس ها</a></li>
+                                <li><a href="/#team">تیم</a></li>
+                                <li><a href="/#contact">تماس با ما</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/#portfolio">نمونه کارها</a></li>
+                                <li><a href="/account/logoff">خروج از حساب</a></li>
+                            }
+
+                        </ul>
+                    </nav><!-- .nav-menu -->
+                </div>
+            </div>
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Intro Section ======= -->
+
+    <section id="intro">
+        <div class="intro-container">
+            <div id="introCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+
+
+                <div class="carousel-inner" role="listbox" dir="ltr">
+
+                    <div class="carousel-item active" style="background-image: url(/Content/assets/img/intro-carousel/1.jpg)">
+                        <div class="carousel-container">
+                            <div class="container" dir="rtl">
+                                <h2 class="animate__animated animate__fadeInDown">Keep Track</h2>
+                                <h2 class="animate__animated animate__fadeInDown">سیستم پیگیری پروژه</h2>
+                                <br />
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <a style="font-size: 20px" class="btn-get-started animate__animated animate__fadeInUp"> @User.Identity.GetUserName() خوش آمدید !</a>
+                                    <br />
+                                    <a href="#portfolio" style="font-size: 15px" class="btn-get-started scrollto animate__animated animate__fadeInUp">لیست پروژه ها</a>
+                                }
+                                else
+                                {
+                                    <a href="/account/register" style="font-size: 20px" class="btn-get-started scrollto animate__animated animate__fadeInUp">شروع کنید</a>
+                                    <br />
+                                    <a href="/account/login" style="font-size: 15px" class="btn-get-started scrollto animate__animated animate__fadeInUp">ورود مشتریان</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Intro Section -->
+
+    <main id="main">
+
+        <!-- ======= Featured Services Section Section ======= -->
+        @if (!Request.IsAuthenticated)
+        {
+            <section id="featured-services">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-4 box">
+                            <i class="ion-ios-bookmarks-outline"></i>
+                            <h4 class="title"><a href="">لورم ایپسوم متن ساختگی</a></h4>
+                            <p class="description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و </p>
+                        </div>
+
+                        <div class="col-lg-4 box box-bg">
+                            <i class="ion-ios-stopwatch-outline"></i>
+                            <h4 class="title"><a href="">لورم ایپسوم</a></h4>
+                            <p class="description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله </p>
+                        </div>
+
+                        <div class="col-lg-4 box">
+                            <i class="ion-ios-heart-outline"></i>
+                            <h4 class="title"><a href="">لورم ایپسوم</a></h4>
+                            <p class="description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section><!-- End Featured Services Section -->
+            <!-- ======= About Us Section ======= -->
+            <section id="about">
+                <div class="container" data-aos="fade-up">
+
+                    <header class="section-header">
+                        <h3>درباره ما</h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود </p>
+                    </header>
+
+                    <div class="row about-cols">
+
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="about-col">
+                                <div class="img">
+                                    <img src="/Content/assets/img/about-mission.jpg" alt="" class="img-fluid">
+                                    <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                                </div>
+                                <h2 class="title"><a href="#">ماموریت ما</a></h2>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="about-col">
+                                <div class="img">
+                                    <img src="/Content/assets/img/about-plan.jpg" alt="" class="img-fluid">
+                                    <div class="icon"><i class="ion-ios-list-outline"></i></div>
+                                </div>
+                                <h2 class="title"><a href="#">نقشه ما</a></h2>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="about-col">
+                                <div class="img">
+                                    <img src="/Content/assets/img/about-vision.jpg" alt="" class="img-fluid">
+                                    <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+                                </div>
+                                <h2 class="title"><a href="#">دیدگاه ما</a></h2>
+                                <p>
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- End About Us Section -->
+            <!-- ======= Services Section ======= -->
+            <section id="services">
+                <div class="container" data-aos="fade-up">
+
+                    <header class="section-header wow fadeInUp">
+                        <h3>سرویس ها</h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و </p>
+                    </header>
+
+                    <div class="row">
+
+                        <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="100">
+                            <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
+                            <h4 class="title"><a href="">لورم ایپسوم</a></h4>
+                            <p class="description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="200">
+                            <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
+                            <h4 class="title"><a href="">لورم ایپسوم</a></h4>
+                            <p class="description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="300">
+                            <div class="icon"><i class="ion-ios-paper-outline"></i></div>
+                            <h4 class="title"><a href="">لورم ایپسوم</a></h4>
+                            <p class="description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="200">
+                            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                            <h4 class="title"><a href="">لورم ایپسوم</a></h4>
+                            <p class="description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="300">
+                            <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
+                            <h4 class="title"><a href="">لورم ایپسوم</a></h4>
+                            <p class="description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="400">
+                            <div class="icon"><i class="ion-ios-people-outline"></i></div>
+                            <h4 class="title"><a href="">لورم ایپسوم</a></h4>
+                            <p class="description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- End Services Section -->
+            <!-- ======= Call To Action Section ======= -->
+            <section id="call-to-action">
+                <div class="container text-center" data-aos="zoom-in">
+                    <h3>لورم ایپسوم</h3>
+                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و ... </p>
+                    <a class="cta-btn" href="#">لورم ایپسوم</a>
+                </div>
+            </section><!-- End Call To Action Section -->
+            <!-- ======= Skills Section ======= -->
+            <section id="skills">
+                <div class="container" data-aos="fade-up">
+
+                    <header class="section-header">
+                        <h3>مهارتهای ما</h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و ... </p>
+                    </header>
+
+                    <div class="skills-content">
+
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                <span class="skill">HTML <i class="val">۱۰۰٪</i></span>
+                            </div>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                <span class="skill">CSS <i class="val">۹۰٪</i></span>
+                            </div>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <span class="skill"><i class="val">۷۵٪</i> JavaScript</span>
+                            </div>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+                                <span class="skill">Photoshop <i class="val">۵۵٪</i></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- End Skills Section -->
+            <!-- ======= Facts Section ======= -->
+            <section id="facts">
+                <div class="container" data-aos="fade-up">
+
+                    <header class="section-header">
+                        <h3>واقعیت ها</h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و ... </p>
+                    </header>
+
+                    <div class="row counters">
+
+                        <div class="col-lg-3 col-6 text-center">
+                            <span data-toggle="counter-up">274</span>
+                            <p>مشتری ها</p>
+                        </div>
+
+                        <div class="col-lg-3 col-6 text-center">
+                            <span data-toggle="counter-up">421</span>
+                            <p>پروژه ها</p>
+                        </div>
+
+                        <div class="col-lg-3 col-6 text-center">
+                            <span data-toggle="counter-up">1,364</span>
+                            <p>ساعت های پشتیبانی</p>
+                        </div>
+
+                        <div class="col-lg-3 col-6 text-center">
+                            <span data-toggle="counter-up">18</span>
+                            <p>سخت کوشان</p>
+                        </div>
+
+                    </div>
+
+                    <div class="facts-img">
+                        <img src="/Content/assets/img/facts-img.png" alt="" class="img-fluid">
+                    </div>
+
+                </div>
+            </section><!-- End Facts Section -->
+            <section id="clients">
+                <div class="container" data-aos="zoom-in">
+
+                    <header class="section-header">
+                        <h3>مشتریان ما</h3>
+                    </header>
+
+                    <div class="owl-carousel clients-carousel">
+                        <img src="/Content/assets/img/clients/client-1.png" alt="">
+                        <img src="/Content/assets/img/clients/client-2.png" alt="">
+                        <img src="/Content/assets/img/clients/client-3.png" alt="">
+                        <img src="/Content/assets/img/clients/client-4.png" alt="">
+                        <img src="/Content/assets/img/clients/client-5.png" alt="">
+                        <img src="/Content/assets/img/clients/client-6.png" alt="">
+                        <img src="/Content/assets/img/clients/client-7.png" alt="">
+                        <img src="/Content/assets/img/clients/client-8.png" alt="">
+                    </div>
+
+                </div>
+            </section><!-- End Our Clients Section -->
+            <!-- ======= Testimonials Section ======= -->
+            <section id="testimonials" class="section-bg">
+                <div class="container" data-aos="fade-up">
+
+                    <header class="section-header">
+                        <h3>گواهینامه ها</h3>
+                    </header>
+
+                    <div class="owl-carousel testimonials-carousel">
+
+                        <div class="testimonial-item">
+                            <img src="/Content/assets/img/testimonial-1.jpg" class="testimonial-img" alt="">
+                            <h3>ساول گودمن</h3>
+                            <h4>مدیرعامل و بنیانگذار</h4>
+                            <p>
+                                <img src="/Content/assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و ...
+                                <img src="/Content/assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                            </p>
+                        </div>
+
+                        <div class="testimonial-item">
+                            <img src="/Content/assets/img/testimonial-2.jpg" class="testimonial-img" alt="">
+                            <h3>سارا ویلسون</h3>
+                            <h4>طراح</h4>
+                            <p>
+                                <img src="/Content/assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و ...
+                                <img src="/Content/assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                            </p>
+                        </div>
+
+                        <div class="testimonial-item">
+                            <img src="/Content/assets/img/testimonial-3.jpg" class="testimonial-img" alt="">
+                            <h3>Jena Karlis</h3>
+                            <h4>صاحب فروشگاه</h4>
+                            <p>
+                                <img src="/Content/assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و ...
+                                <img src="/Content/assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                            </p>
+                        </div>
+
+                        <div class="testimonial-item">
+                            <img src="/Content/assets/img/testimonial-4.jpg" class="testimonial-img" alt="">
+                            <h3>مت براندون</h3>
+                            <h4>فریلنسر</h4>
+                            <p>
+                                <img src="/Content/assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و ...
+                                <img src="/Content/assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                            </p>
+                        </div>
+
+                        <div class="testimonial-item">
+                            <img src="/Content/assets/img/testimonial-5.jpg" class="testimonial-img" alt="">
+                            <h3>جان لارسون</h3>
+                            <h4>کارآفرین</h4>
+                            <p>
+                                <img src="/Content/assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و ...
+                                <img src="/Content/assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- End Testimonials Section -->
+            <!-- ======= Team Section ======= -->
+            <section id="team">
+                <div class="container" data-aos="fade-up">
+                    <div class="section-header">
+                        <h3>تیم</h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و ... </p>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="member" data-aos="fade-up" data-aos-delay="100">
+                                <img src="/Content/assets/img/team-1.jpg" class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>والتر وایت</h4>
+                                        <span>مدیر ارشد اجرایی</span>
+                                        <div class="social">
+                                            <a href=""><i class="fa fa-twitter"></i></a>
+                                            <a href=""><i class="fa fa-facebook"></i></a>
+                                            <a href=""><i class="fa fa-google-plus"></i></a>
+                                            <a href=""><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="member" data-aos="fade-up" data-aos-delay="200">
+                                <img src="/Content/assets/img/team-2.jpg" class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>سارا جانسون</h4>
+                                        <span>مدیر تولید</span>
+                                        <div class="social">
+                                            <a href=""><i class="fa fa-twitter"></i></a>
+                                            <a href=""><i class="fa fa-facebook"></i></a>
+                                            <a href=""><i class="fa fa-google-plus"></i></a>
+                                            <a href=""><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="member" data-aos="fade-up" data-aos-delay="300">
+                                <img src="/Content/assets/img/team-3.jpg" class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>ویلیام اندرسون</h4>
+                                        <span>مدیر ارشد فناوری</span>
+                                        <div class="social">
+                                            <a href=""><i class="fa fa-twitter"></i></a>
+                                            <a href=""><i class="fa fa-facebook"></i></a>
+                                            <a href=""><i class="fa fa-google-plus"></i></a>
+                                            <a href=""><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="member" data-aos="fade-up" data-aos-delay="400">
+                                <img src="/Content/assets/img/team-4.jpg" class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>آماندا جپسون</h4>
+                                        <span>حسابدار</span>
+                                        <div class="social">
+                                            <a href=""><i class="fa fa-twitter"></i></a>
+                                            <a href=""><i class="fa fa-facebook"></i></a>
+                                            <a href=""><i class="fa fa-google-plus"></i></a>
+                                            <a href=""><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- End Team Section -->
+            <!-- ======= Contact Section ======= -->
+            <section id="contact" class="section-bg">
+                <div class="container" data-aos="fade-up">
+
+                    <div class="section-header">
+                        <h3>تماس با ما</h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و ... </p>
+                    </div>
+
+                    <div class="row contact-info">
+
+                        <div class="col-md-4">
+                            <div class="contact-address">
+                                <i class="ion-ios-location-outline"></i>
+                                <h3>نشانی</h3>
+                                <address>خیابان لورم کوچه ایپسوم پلاک ۸ ایران</address>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="contact-phone">
+                                <i class="ion-ios-telephone-outline"></i>
+                                <h3>شماره تلفن</h3>
+                                <p><a href="tel:+155895548855"> 789 3456 0912 98+ </a></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="contact-email">
+                                <i class="ion-ios-email-outline"></i>
+                                <h3>ایمیل</h3>
+                                <p><a href="mailto:info@example.com">info@example.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="اسم شما" data-rule="minlen:4" data-msg="لطفاً حداقل 4 کاراکتر وارد کنید" />
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="ایمیل شما" data-rule="email" data-msg="لطفا یک ایمیل معتبر وارد کنید" />
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="موضوع" data-rule="minlen:4" data-msg="لطفاً حداقل 8 کاراکتر موضوع را وارد کنید" />
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="لطفا برای ما چیزی بنویسید" placeholder="پیام"></textarea>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="loading"> ... در حال بارگذاری</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">پیام شما با موفقیت ارسال شد. متشکرم!</div>
+                            </div>
+                            <div class="text-center"><button type="submit">ارسال پیام</button></div>
+                        </form>
+                    </div>
+
+                </div>
+            </section><!-- End Contact Section -->
+        }
+        else
+        {
+            <!-- ======= Portfolio Section ======= -->
+            <section id="portfolio" class="section-bg">
+                <div class="container" data-aos="fade-up">
+
+                    <header class="section-header">
+                        <h3 class="section-title">نمونه کارها</h3>
+                    </header>
+
+                    <div class="row" data-aos="fade-up" data-aos-delay="100">
+                        <div class=" col-lg-12">
+                            <ul id="portfolio-flters">
+                                <li data-filter="*" class="filter-active">همه</li>
+                                <li data-filter=".filter-app">برنامه</li>
+                                <li data-filter=".filter-card">کارت</li>
+                                <li data-filter=".filter-web">وب</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                            <div class="portfolio-wrap">
+                                <figure>
+                                    <img src="/Content/assets/img/portfolio/app1.jpg" class="img-fluid" alt="">
+                                    <a href="/Content/assets/img/portfolio/app1.jpg" data-lightbox="portfolio" title="برنامه ۱" class="link-preview"><i class="ion ion-eye"></i></a>
+                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
+                                </figure>
+
+                                <div class="portfolio-info">
+                                    <h4><a href="portfolio-details.html">برنامه ۱</a></h4>
+                                    <p>برنامه</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                            <div class="portfolio-wrap">
+                                <figure>
+                                    <img src="/Content/assets/img/portfolio/web3.jpg" class="img-fluid" alt="">
+                                    <a href="/Content/assets/img/portfolio/web3.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="وب ۳"><i class="ion ion-eye"></i></a>
+                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
+                                </figure>
+
+                                <div class="portfolio-info">
+                                    <h4><a href="portfolio-details.html">وب ۳</a></h4>
+                                    <p>وب</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                            <div class="portfolio-wrap">
+                                <figure>
+                                    <img src="/Content/assets/img/portfolio/app2.jpg" class="img-fluid" alt="">
+                                    <a href="/Content/assets/img/portfolio/app2.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="برنامه ۲"><i class="ion ion-eye"></i></a>
+                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
+                                </figure>
+
+                                <div class="portfolio-info">
+                                    <h4><a href="portfolio-details.html">برنامه ۲</a></h4>
+                                    <p>برنامه</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                            <div class="portfolio-wrap">
+                                <figure>
+                                    <img src="/Content/assets/img/portfolio/card2.jpg" class="img-fluid" alt="">
+                                    <a href="/Content/assets/img/portfolio/card2.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="کارت ۲"><i class="ion ion-eye"></i></a>
+                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
+                                </figure>
+
+                                <div class="portfolio-info">
+                                    <h4><a href="portfolio-details.html">کارت ۲</a></h4>
+                                    <p>کارت</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                            <div class="portfolio-wrap">
+                                <figure>
+                                    <img src="/Content/assets/img/portfolio/web2.jpg" class="img-fluid" alt="">
+                                    <a href="/Content/assets/img/portfolio/web2.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="وب ۲"><i class="ion ion-eye"></i></a>
+                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
+                                </figure>
+
+                                <div class="portfolio-info">
+                                    <h4><a href="portfolio-details.html">وب ۲</a></h4>
+                                    <p>وب</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                            <div class="portfolio-wrap">
+                                <figure>
+                                    <img src="/Content/assets/img/portfolio/app3.jpg" class="img-fluid" alt="">
+                                    <a href="/Content/assets/img/portfolio/app3.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="برنامه ۳"><i class="ion ion-eye"></i></a>
+                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
+                                </figure>
+
+                                <div class="portfolio-info">
+                                    <h4><a href="portfolio-details.html">برنامه ۳</a></h4>
+                                    <p>برنامه</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                            <div class="portfolio-wrap">
+                                <figure>
+                                    <img src="/Content/assets/img/portfolio/card1.jpg" class="img-fluid" alt="">
+                                    <a href="/Content/assets/img/portfolio/card1.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="کارت ۱"><i class="ion ion-eye"></i></a>
+                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
+                                </figure>
+
+                                <div class="portfolio-info">
+                                    <h4><a href="portfolio-details.html">کارت ۱</a></h4>
+                                    <p>کارت</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                            <div class="portfolio-wrap">
+                                <figure>
+                                    <img src="/Content/assets/img/portfolio/card3.jpg" class="img-fluid" alt="">
+                                    <a href="/Content/assets/img/portfolio/card3.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="کارت ۳"><i class="ion ion-eye"></i></a>
+                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
+                                </figure>
+
+                                <div class="portfolio-info">
+                                    <h4><a href="portfolio-details.html">کارت ۳</a></h4>
+                                    <p>کارت</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                            <div class="portfolio-wrap">
+                                <figure>
+                                    <img src="/Content/assets/img/portfolio/web1.jpg" class="img-fluid" alt="">
+                                    <a href="/Content/assets/img/portfolio/web1.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="وب ۱"><i class="ion ion-eye"></i></a>
+                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
+                                </figure>
+
+                                <div class="portfolio-info">
+                                    <h4><a href="portfolio-details.html">وب ۱</a></h4>
+                                    <p>وب</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Portfolio Section -->
+        }
+
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-info text-center text-md-end">
+                        <h3>بیزپیج</h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای ... </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links text-center text-md-end">
+                        <h4>لینک های مفید</h4>
+                        <ul>
+                            <li><i class="ion-ios-arrow-left"></i> <a href="#">خانه</a></li>
+                            <li><i class="ion-ios-arrow-left"></i> <a href="#">درباره ما</a></li>
+                            <li><i class="ion-ios-arrow-left"></i> <a href="#">سرویس ها</a></li>
+                            <li><i class="ion-ios-arrow-left"></i> <a href="#">شرایط استفاده از خدمات</a></li>
+                            <li><i class="ion-ios-arrow-left"></i> <a href="#">حریم خصوصی</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact text-center text-md-end">
+                        <h4>تماس با ما</h4>
+                        <p>
+                            خیابان لورم <br>
+                            کوچه ایپسوم پلاک ۸<br>
+                            ایران <br>
+                            <strong>شماره تلفن :</strong> 789 3456 0912 98+ <br>
+                            <strong>ایمیل :</strong> info@example.com<br>
+                        </p>
+
+                        <div class="social-links">
+                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-newsletter text-center text-md-end">
+                        <h4>خبرنامه ما</h4>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای ... </p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="اشتراک">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; کپی رایت <strong>بیزپیج</strong>. کلیه حقوق محفوظ است
+            </div>
+            <div class="credits">
+                <!--
+                  All the links in the footer should remain intact.
+                  You can delete the links only if you purchased the pro version.
+                  Licensing information: https://bootstrapmade.com/license/
+                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+                -->
+                طراحی شده توسط <a href="https://themeshop.ir/">تم شاپ</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- Uncomment below i you want to use a preloader -->
+    <!-- <div id="preloader"></div> -->
+    <!-- Vendor JS Files -->
+    <script src="/Content/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/Content/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="/Content/assets/vendor/php-email-form/validate.js"></script>
+    <script src="/Content/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="/Content/assets/vendor/counterup/counterup.min.js"></script>
+    <script src="/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/Content/assets/vendor/venobox/venobox.min.js"></script>
+    <script src="/Content/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="/Content/assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/Content/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

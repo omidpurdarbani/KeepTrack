@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>keeptrack - @ViewBag.Title</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/Content/assets/img/favicon.png" rel="icon">
+    <link href="/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet"> -->
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/Content/assets/font/vazir/font-face.css">
+
+    <!-- Vendor CSS Files -->
+    <link href="/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/Content/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: BizPage - v4.0.4
+    * Template URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body dir="rtl">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container-fluid">
+
+            <div class="row justify-content-center">
+                <div class="col-xl-11 d-flex align-items-center">
+                    <h1 class="logo ms-auto"><a href="index.html">بیزپیج</a></h1>
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    <!-- <a href="index.html" class="logo me-auto"><img src="/Content/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+                    <nav class="nav-menu d-none d-lg-block">
+                        <ul>
+                            <li><a href="/">خانه</a></li>
+                            <li><a href="#about">درباره ما</a></li>
+                            <li><a href="#services">سرویس ها</a></li>
+                            <li><a href="#portfolio">نمونه کارها</a></li>
+                            <li><a href="#team">تیم</a></li>
+                            @*<li class="drop-down">
+                                    <a href="">منو</a>
+                                    <ul>
+                                        <li><a href="#">زیر منو ۱</a></li>
+                                        <li><a href="#">زیر منو ۲</a></li>
+                                        <li><a href="#">زیر منو ۳</a></li>
+                                        <li><a href="#">زیر منو ۴</a></li>
+                                    </ul>
+                                </li>*@
+                            <li><a href="#contact">تماس با ما</a></li>
+
+                        </ul>
+                    </nav><!-- .nav-menu -->
+                </div>
+            </div>
+
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+        <!-- ======= Breadcrumbs Section ======= -->
+        @RenderBody()
+        <br />
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-info text-center text-md-end">
+                        <h3>بیزپیج</h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای ... </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links text-center text-md-end">
+                        <h4>لینک های مفید</h4>
+                        <ul>
+                            <li><i class="ion-ios-arrow-left"></i> <a href="#">خانه</a></li>
+                            <li><i class="ion-ios-arrow-left"></i> <a href="#">درباره ما</a></li>
+                            <li><i class="ion-ios-arrow-left"></i> <a href="#">سرویس ها</a></li>
+                            <li><i class="ion-ios-arrow-left"></i> <a href="#">شرایط استفاده از خدمات</a></li>
+                            <li><i class="ion-ios-arrow-left"></i> <a href="#">حریم خصوصی</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact text-center text-md-end">
+                        <h4>تماس با ما</h4>
+                        <p>
+                            خیابان لورم <br>
+                            کوچه ایپسوم پلاک ۸<br>
+                            ایران <br>
+                            <strong>شماره تلفن :</strong> 789 3456 0912 98+ <br>
+                            <strong>ایمیل :</strong> info@example.com<br>
+                        </p>
+
+                        <div class="social-links">
+                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-newsletter text-center text-md-end">
+                        <h4>خبرنامه ما</h4>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای ... </p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="اشتراک">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; کپی رایت <strong>بیزپیج</strong>. کلیه حقوق محفوظ است
+            </div>
+            <div class="credits">
+                <!--
+                  All the links in the footer should remain intact.
+                  You can delete the links only if you purchased the pro version.
+                  Licensing information: https://bootstrapmade.com/license/
+                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+                -->
+                طراحی شده توسط <a href="https://themeshop.ir/">تم شاپ</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- Uncomment below i you want to use a preloader -->
+    <!-- <div id="preloader"></div> -->
+    <!-- Vendor JS Files -->
+    <script src="/Content/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/Content/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="/Content/assets/vendor/php-email-form/validate.js"></script>
+    <script src="/Content/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="/Content/assets/vendor/counterup/counterup.min.js"></script>
+    <script src="/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/Content/assets/vendor/venobox/venobox.min.js"></script>
+    <script src="/Content/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="/Content/assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/Content/assets/js/main.js"></script>
+
+    @RenderSection("scripts", false)
+</body>
+
+</html>

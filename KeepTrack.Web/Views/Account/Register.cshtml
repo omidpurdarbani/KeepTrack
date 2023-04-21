@@ -1,0 +1,66 @@
+﻿@model KeepTrack.Core.DTOs.RegisterViewModel
+@{
+    ViewBag.Title = "ثبت نام";
+}
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            
+            <ol>
+                <li><a href="/">خانه</a></li>
+                <li>ثبت نام</li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- End Breadcrumbs Section -->
+
+<section class="inner-page mt-4">
+    <div class="container">
+
+        <h2>@ViewBag.Title</h2>
+
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="col-md-2 control-label">ایمیل</label>
+                <div class="col-md-12">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <label class="col-md-2 control-label">کلمه عبور</label>
+                <div class="col-md-12">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <label class="col-md-2 control-label">تکرار کلمه عبور</label>
+                <div class="col-md-12">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <button type="submit" class="btn btn-success" style="font-size: 20px">ثبت نام</button>
+            </div>
+            <br />
+
+            <p>
+                @Html.ActionLink("ورود", "Login")
+            </p>
+
+        }
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>
+</section>
