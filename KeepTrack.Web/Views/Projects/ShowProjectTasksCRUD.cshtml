@@ -1,0 +1,60 @@
+﻿@model List<KeepTrack.DataLayer.Models.ProjectTask>
+<style>
+    ul li {
+        margin-bottom: 25px;
+    }
+</style>
+<ul>
+    @{
+        var startItem = Model.SingleOrDefault(p => p.ParentId == 0);
+        var inside1 = Model.Where(p => p.ParentId == startItem?.Id).ToList();
+        if (startItem != null)
+        {
+
+            <li>@startItem.Name</li>
+            <br />
+            <ul>
+                @foreach (var insideFirstItem in inside1)
+                {
+                    <li>
+                        @insideFirstItem.Name - @insideFirstItem.StateType.Name - <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-taskid="@insideFirstItem.Id" data-bs-type="edit">ویرایش فاز</button> | <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-taskid="@insideFirstItem.Id" data-bs-type="delete">حذف فاز</button>
+                    </li>
+                   
+                    var insideSecond = Model.Where(p => p.ParentId == insideFirstItem.Id).ToList();
+                    
+                    <ul>
+                        @foreach (var insideSecondItem in insideSecond)
+                        {
+                            <li>
+                                @insideSecondItem.Name - @insideSecondItem.StateType.Name - <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-taskid="@insideSecondItem.Id" data-bs-type="edit">ویرایش مرحله</button> | <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-taskid="@insideSecondItem.Id" data-bs-type="delete">حذف مرحله</button>
+                            </li>
+                            
+                            var insideThird = Model.Where(p => p.ParentId == insideSecondItem.Id).ToList();
+                            
+                            <ul>
+                                @foreach (var insideThirdItem in insideThird)
+                                {
+                                    <li>
+                                        @insideThirdItem.Name - @insideThirdItem.StateType.Name - <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-taskid="@insideThirdItem.Id" data-bs-type="edit">ویرایش جزئیات</button> | <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-taskid="@insideThirdItem.Id" data-bs-type="delete">حذف جزئیات</button>
+                                    </li>
+                                }
+
+                                <li>
+                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-projectid="@ViewBag.ProjectId" data-bs-parentId="@insideSecondItem.Id" data-bs-type="insert">افزودن جزئیات جدید</button>
+                                </li>
+                            </ul>
+
+                        }
+                        <li>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-projectid="@ViewBag.ProjectId" data-bs-parentId="@insideFirstItem.Id" data-bs-type="insert">افزودن مرحله جدید</button>
+                        </li>
+                    </ul>
+                    <br />
+                }
+                <li>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-projectid="@ViewBag.ProjectId" data-bs-parentId="@startItem.Id" data-bs-type="insert">افزودن فاز جدید</button>
+                </li>
+            </ul>
+        }
+    }
+</ul>

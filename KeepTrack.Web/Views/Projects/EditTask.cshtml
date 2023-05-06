@@ -1,0 +1,49 @@
+﻿@model KeepTrack.Core.DTOs.EditTaskViewModel
+
+@{
+    ViewBag.Title = "افزودن";
+}
+
+@using (Html.BeginForm("EditTask", "Projects", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="taskId" value="@Model.TaskId"/>
+    <input type="hidden" name="projectId" value="@Model.ProjectId"/>
+    <input type="hidden" name="parentId" value="@Model.ParentId" />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.StateTypes, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            <select id="stateTypes" name="stateTypes">
+                @foreach (var item in Model.StateTypes)
+                {
+                    <option value="@item.Id" @(item.Id==Model.StateTypeId?"selected":"")>@item.Name</option>
+                }
+            </select>
+
+            @Html.ValidationMessageFor(model => model.StateTypes, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="ویرایش" class="btn btn-success" />
+            <input type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close" value="بستن" />
+        </div>
+    </div>
+
+}

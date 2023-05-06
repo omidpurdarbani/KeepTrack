@@ -1,11 +1,14 @@
-﻿using KeepTrack.DataLayer.Models;
+﻿using KeepTrack.DataLayer.Context;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using ProjectCMS.Core.Services.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Web;
 
-
-namespace ProjectCMS.Core.Services.Services
+namespace KeepTrack.Core.Services.Services
 {
     public class RoleService : IRoleService
     {
@@ -15,14 +18,29 @@ namespace ProjectCMS.Core.Services.Services
         {
             _context = new ApplicationDbContext();
         }
-        public bool CheckRole(int[] roleId, string userId)
-        {
-            var userRole = _context.Users
-                .Include(r => r.Roles)
-                .Where(u => u.Id == userId)
-                .SelectMany(role => role.Roles).Single().RoleId;
 
-            return roleId.Contains(Convert.ToInt32(userRole));
+        public int GetCurrentUserRoleId(string userId = null)
+        {
+            if (userId == null)
+            {
+                userId = HttpContext.Current.User.Identity.GetUserId();
+            }
+
+            return _context.Users.AsNoTracking()
+                .Single(u => u.Id == userId)
+                .RoleId;
+        }
+
+        public bool CheckRole(int[] roleId)
+        {
+            var userRole = Convert.ToInt32(GetCurrentUserRoleId());
+
+            return roleId.Contains(userRole);
+        }
+
+        public List<IdentityRole> GetAllRoles()
+        {
+            return _context.Roles.ToList();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using ProjectCMS.Core.Services.Services;
+﻿using KeepTrack.Core.Services.Services;
 using System.Web.Mvc;
 
 namespace KeepTrack.Core.Security
@@ -20,10 +19,7 @@ namespace KeepTrack.Core.Security
         {
             if (filterContext.HttpContext.User.Identity.IsAuthenticated)
             {
-                if (!roleService.CheckRole
-                        (
-                            roleId,
-                            filterContext.HttpContext.User.Identity.GetUserId())
+                if (!roleService.CheckRole(roleId)
                     )
                 {
                     filterContext.Result = new RedirectResult("/account/login");

@@ -1,0 +1,131 @@
+﻿@model KeepTrack.Core.DTOs.UserProjectViewModel
+@{
+    ViewBag.Title = Model.Name;
+}
+<div class="container" style="margin-top: 150px">
+    <h1>@Model.Name</h1>
+    <h2>@Model.Description</h2>
+    <h3>@Model.StateTypeName</h3>
+    <h3>@Model.ProjectTypeName</h3>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-projectid="@Model.Id" data-bs-type="editProject">ویرایش پروژه</button>
+    <br />
+    <br />
+    <div>
+        @Html.Action("ShowProjectTasks", "Projects", Model.Id)
+    </div>
+</div>
+
+<!-- Modal -->
+
+
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="ModalLabel"></h1>
+            </div>
+            <div class="modal-body" id="ModalBody">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal -->
+
+
+@section scripts
+{
+    <script src="~/Scripts/modal.js"></script>
+    <script>
+        const Modal = document.getElementById('myModal')
+        if (Modal) {
+            Modal.addEventListener('show.bs.modal', event => {
+
+                // Button that triggered the modal
+                const button = event.relatedTarget
+
+                const type = button.getAttribute('data-bs-type')
+
+                if (type == 'editProject') {
+
+                    // Extract info from data-bs-* attributes
+                    const projectId = button.getAttribute('data-bs-projectId')
+
+                    // If necessary, you could initiate an Ajax request here
+
+                    $.get("/Projects/EditProject?projectId=" + projectId, function (result) {
+
+                        $("#Modal").modal();
+
+                        // and then do the updating in a callback.
+                        // Update the modal's content.
+
+                        $("#ModalLabel").html(button.innerHTML);
+                        $("#ModalBody").html(result);
+                    });
+                }
+
+                if (type == 'insert')
+                {
+
+                    // Extract info from data-bs-* attributes
+                    const projectId = button.getAttribute('data-bs-projectid')
+                    const ParentId = button.getAttribute('data-bs-parentid')
+
+                    // If necessary, you could initiate an Ajax request here
+
+                    $.get("/Projects/InsertTask?projectId=" + projectId + "&&parentId=" + ParentId, function (result) {
+
+                        $("#Modal").modal();
+
+                        // and then do the updating in a callback.
+                        // Update the modal's content.
+
+                        $("#ModalLabel").html(button.innerHTML);
+                        $("#ModalBody").html(result);
+                    });
+                }
+                if (type == 'edit')
+                {
+
+                    // Extract info from data-bs-* attributes
+                    const taskId = button.getAttribute('data-bs-taskid')
+
+                    // If necessary, you could initiate an Ajax request here
+
+                    $.get("/Projects/EditTask?taskId=" + taskId , function (result) {
+
+                        $("#Modal").modal();
+
+                        // and then do the updating in a callback.
+                        // Update the modal's content.
+
+                        $("#ModalLabel").html(button.innerHTML);
+                        $("#ModalBody").html(result);
+                    });
+                }
+
+                if (type == 'delete')
+                {
+
+                    // Extract info from data-bs-* attributes
+                    const taskId = button.getAttribute('data-bs-taskid')
+
+                    // If necessary, you could initiate an Ajax request here
+
+                    $.get("/Projects/DeleteTask?taskId=" + taskId , function (result) {
+
+                        $("#Modal").modal();
+
+                        // and then do the updating in a callback.
+                        // Update the modal's content.
+
+                        $("#ModalLabel").html(button.innerHTML);
+                        $("#ModalBody").html(result);
+                    });
+                }
+
+            })
+        }
+    </script>
+}

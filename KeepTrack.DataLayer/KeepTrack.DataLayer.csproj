@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\ApplicatiobDbContext.cs" />
     <Compile Include="Migrations\202304210803129_username.cs" />
     <Compile Include="Migrations\202304210803129_username.designer.cs">
       <DependentUpon>202304210803129_username.cs</DependentUpon>
@@ -65,8 +66,36 @@
     <Compile Include="Migrations\202304210809203_activeuser.designer.cs">
       <DependentUpon>202304210809203_activeuser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304211834357_userrole.cs" />
+    <Compile Include="Migrations\202304211834357_userrole.designer.cs">
+      <DependentUpon>202304211834357_userrole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304211837398_userroleid.cs" />
+    <Compile Include="Migrations\202304211837398_userroleid.designer.cs">
+      <DependentUpon>202304211837398_userroleid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304231700059_InitialProjectModels.cs" />
+    <Compile Include="Migrations\202304231700059_InitialProjectModels.designer.cs">
+      <DependentUpon>202304231700059_InitialProjectModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304231717543_updateProjectTypeimage.cs" />
+    <Compile Include="Migrations\202304231717543_updateProjectTypeimage.designer.cs">
+      <DependentUpon>202304231717543_updateProjectTypeimage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304231912166_updateProjectTypeDataName.cs" />
+    <Compile Include="Migrations\202304231912166_updateProjectTypeDataName.designer.cs">
+      <DependentUpon>202304231912166_updateProjectTypeDataName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304261609206_updateProjectTaskIdType.cs" />
+    <Compile Include="Migrations\202304261609206_updateProjectTaskIdType.designer.cs">
+      <DependentUpon>202304261609206_updateProjectTaskIdType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ProjectTask.cs" />
+    <Compile Include="Models\ProjectType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\StateType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,7 +109,26 @@
     <EmbeddedResource Include="Migrations\202304210809203_activeuser.resx">
       <DependentUpon>202304210809203_activeuser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304211834357_userrole.resx">
+      <DependentUpon>202304211834357_userrole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304211837398_userroleid.resx">
+      <DependentUpon>202304211837398_userroleid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304231700059_InitialProjectModels.resx">
+      <DependentUpon>202304231700059_InitialProjectModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304231717543_updateProjectTypeimage.resx">
+      <DependentUpon>202304231717543_updateProjectTypeimage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304231912166_updateProjectTypeDataName.resx">
+      <DependentUpon>202304231912166_updateProjectTypeDataName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304261609206_updateProjectTaskIdType.resx">
+      <DependentUpon>202304261609206_updateProjectTaskIdType.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

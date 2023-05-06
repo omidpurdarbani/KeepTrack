@@ -1,7 +1,12 @@
-﻿namespace ProjectCMS.Core.Services.Interfaces
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+
+namespace ProjectCMS.Core.Services.Interfaces
 {
     public interface IRoleService
     {
-        bool CheckRole(int[] roleId, string userId);
+        int GetCurrentUserRoleId(string userId = null);
+        bool CheckRole(int[] roleId);
+        List<IdentityRole> GetAllRoles();
     }
 }

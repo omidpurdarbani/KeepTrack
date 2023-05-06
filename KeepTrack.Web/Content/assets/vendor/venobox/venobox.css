@@ -1,3 +1,4 @@
+/*ReSharper disable All*/
 /* ------ venobox.css --------*/
 .vbox-overlay *, .vbox-overlay *:before, .vbox-overlay *:after{
     -webkit-backface-visibility: hidden;

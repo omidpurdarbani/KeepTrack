@@ -1,4 +1,6 @@
-﻿using KeepTrack.Core.DTOs;
+﻿using KeepTrack.Core.Convertors;
+using KeepTrack.Core.DTOs;
+using KeepTrack.Core.Services.Services;
 using KeepTrack.DataLayer.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -15,6 +17,7 @@ namespace KeepTrack.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private UserService UserService => new UserService(UserManager);
 
         public AccountController()
         {
@@ -71,9 +74,25 @@ namespace KeepTrack.Web.Controllers
                 return View(model);
             }
 
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            SignInStatus result;
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            if (UserService.IsUserExistForLogin(model.Email.FixEmail(), model.Password))
+            {
+                if (!UserService.IsUserActive(model.Email))
+                {
+                    ModelState.AddModelError("", "حساب شما غیر فعال می باشد");
+                    return View(model);
+                }
+                result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            }
+            else
+            {
+                ModelState.AddModelError("", "حسابی یافت نشد");
+                return View(model);
+            }
             switch (result)
             {
                 case SignInStatus.Success:
@@ -87,6 +106,7 @@ namespace KeepTrack.Web.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+
         }
 
         //
@@ -153,6 +173,7 @@ namespace KeepTrack.Web.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

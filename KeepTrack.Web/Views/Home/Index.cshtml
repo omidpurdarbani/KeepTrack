@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<KeepTrack.Core.DTOs.UserAllProjectsViewModel>
 @{
     ViewBag.Title = "خانه";
     Layout = null;
@@ -585,155 +586,58 @@
                 <div class="container" data-aos="fade-up">
 
                     <header class="section-header">
-                        <h3 class="section-title">نمونه کارها</h3>
+                        <h3 class="section-title">پروژه ها</h3>
                     </header>
 
+                    @*ToDo*@
                     <div class="row" data-aos="fade-up" data-aos-delay="100">
                         <div class=" col-lg-12">
                             <ul id="portfolio-flters">
                                 <li data-filter="*" class="filter-active">همه</li>
-                                <li data-filter=".filter-app">برنامه</li>
-                                <li data-filter=".filter-card">کارت</li>
-                                <li data-filter=".filter-web">وب</li>
+                                @if (Model.Any(p => p.DataName == "filter-dev"))
+                                {
+                                    <li data-filter=".filter-dev">برنامه نویسی</li>
+                                }
+                                @if (Model.Any(p => p.DataName == "filter-arch"))
+                                {
+                                    <li data-filter=".filter-arch">معماری</li>
+                                }
+                                @if (Model.Any(p => p.DataName == "filter-art"))
+                                {
+                                    <li data-filter=".filter-art">هنری</li>
+                                }
+                                @if (Model.Any(p => p.DataName == "filter-sinc"))
+                                {
+                                    <li data-filter=".filter-sinc">علمی</li>
+                                }
                             </ul>
                         </div>
                     </div>
 
                     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <div class="col-lg-4 col-md-6 portfolio-item  @item.DataName">
+                                    <div class="portfolio-wrap">
+                                        <figure>
+                                            <img src="/Content/ProjectImg/@item.ProjectTypeImage" class="img-fluid" alt="">
+                                            <a href="/projects?projectId=@item.Id" class="link-details" title="جزئیات بیشتر">
+                                                <i class="ion ion-android-open"></i>
+                                            </a>
+                                        </figure>
 
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="/Content/assets/img/portfolio/app1.jpg" class="img-fluid" alt="">
-                                    <a href="/Content/assets/img/portfolio/app1.jpg" data-lightbox="portfolio" title="برنامه ۱" class="link-preview"><i class="ion ion-eye"></i></a>
-                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
-                                </figure>
-
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html">برنامه ۱</a></h4>
-                                    <p>برنامه</p>
+                                        <div class="portfolio-info">
+                                            <h4>
+                                                <a href="/projects?projectId=@item.Id">@item.Name</a>
+                                            </h4>
+                                            <p>@item.Description</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="/Content/assets/img/portfolio/web3.jpg" class="img-fluid" alt="">
-                                    <a href="/Content/assets/img/portfolio/web3.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="وب ۳"><i class="ion ion-eye"></i></a>
-                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
-                                </figure>
-
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html">وب ۳</a></h4>
-                                    <p>وب</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="/Content/assets/img/portfolio/app2.jpg" class="img-fluid" alt="">
-                                    <a href="/Content/assets/img/portfolio/app2.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="برنامه ۲"><i class="ion ion-eye"></i></a>
-                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
-                                </figure>
-
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html">برنامه ۲</a></h4>
-                                    <p>برنامه</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="/Content/assets/img/portfolio/card2.jpg" class="img-fluid" alt="">
-                                    <a href="/Content/assets/img/portfolio/card2.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="کارت ۲"><i class="ion ion-eye"></i></a>
-                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
-                                </figure>
-
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html">کارت ۲</a></h4>
-                                    <p>کارت</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="/Content/assets/img/portfolio/web2.jpg" class="img-fluid" alt="">
-                                    <a href="/Content/assets/img/portfolio/web2.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="وب ۲"><i class="ion ion-eye"></i></a>
-                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
-                                </figure>
-
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html">وب ۲</a></h4>
-                                    <p>وب</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="/Content/assets/img/portfolio/app3.jpg" class="img-fluid" alt="">
-                                    <a href="/Content/assets/img/portfolio/app3.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="برنامه ۳"><i class="ion ion-eye"></i></a>
-                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
-                                </figure>
-
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html">برنامه ۳</a></h4>
-                                    <p>برنامه</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="/Content/assets/img/portfolio/card1.jpg" class="img-fluid" alt="">
-                                    <a href="/Content/assets/img/portfolio/card1.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="کارت ۱"><i class="ion ion-eye"></i></a>
-                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
-                                </figure>
-
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html">کارت ۱</a></h4>
-                                    <p>کارت</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="/Content/assets/img/portfolio/card3.jpg" class="img-fluid" alt="">
-                                    <a href="/Content/assets/img/portfolio/card3.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="کارت ۳"><i class="ion ion-eye"></i></a>
-                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
-                                </figure>
-
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html">کارت ۳</a></h4>
-                                    <p>کارت</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                            <div class="portfolio-wrap">
-                                <figure>
-                                    <img src="/Content/assets/img/portfolio/web1.jpg" class="img-fluid" alt="">
-                                    <a href="/Content/assets/img/portfolio/web1.jpg" class="link-preview venobox" data-gall="portfolioGallery" title="وب ۱"><i class="ion ion-eye"></i></a>
-                                    <a href="portfolio-details.html" class="link-details" title="جزئیات بیشتر"><i class="ion ion-android-open"></i></a>
-                                </figure>
-
-                                <div class="portfolio-info">
-                                    <h4><a href="portfolio-details.html">وب ۱</a></h4>
-                                    <p>وب</p>
-                                </div>
-                            </div>
-                        </div>
+                            }
+                        }
                     </div>
                 </div>
             </section>

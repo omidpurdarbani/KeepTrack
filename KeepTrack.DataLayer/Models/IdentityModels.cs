@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace KeepTrack.DataLayer.Models
     public class ApplicationUser : IdentityUser
     {
         public string Name { get; set; }
+        public int RoleId { get; set; }
         public bool Active { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -18,19 +20,11 @@ namespace KeepTrack.DataLayer.Models
 
             return userIdentity;
         }
+
+        //Relations
+
+        public List<Project> Projects { get; set; }
+
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-    }
 }

@@ -1,18 +1,15 @@
 ﻿namespace KeepTrack.DataLayer.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<KeepTrack.DataLayer.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<KeepTrack.DataLayer.Context.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(KeepTrack.DataLayer.Models.ApplicationDbContext context)
+        protected override void Seed(KeepTrack.DataLayer.Context.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

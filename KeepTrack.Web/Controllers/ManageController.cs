@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using KeepTrack.Core.DTOs;
+using KeepTrack.Core.Services.Services;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using KeepTrack.Core.DTOs;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;

@@ -1,26 +1,24 @@
-﻿using System.Web.Mvc;
+﻿using KeepTrack.Core.Services.Interfaces;
+using KeepTrack.Core.Services.Services;
+using Microsoft.AspNet.Identity;
+using System.Web.Mvc;
 
 namespace KeepTrack.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IProjectService _projectService;
+
+        public HomeController()
+        {
+            _projectService = new ProjectService();
+        }
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            string userId = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            return View(
+                _projectService.GetInfoForUserAllProjectsViewModel(userId)
+            );
         }
     }
 }

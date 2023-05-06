@@ -1,0 +1,37 @@
+﻿@model List<KeepTrack.DataLayer.Models.ProjectTask>
+<ul>
+    @{
+        var startItem = Model.SingleOrDefault(p => p.ParentId == 0);
+        var inside1 = Model.Where(p => p.ParentId == startItem.Id).ToList();
+        if (startItem != null)
+        {
+
+            <li>@startItem.Name</li>
+            <br />
+            <ul>
+                @foreach (var insideFirstItem in inside1)
+                {
+                    var insideSecond = Model.Where(p => p.ParentId == insideFirstItem.Id).ToList();
+                    <li>@insideFirstItem.Name - @insideFirstItem.StateType.Name </li>
+                    <br />
+                    <ul>
+                        @foreach (var insideSecondItem in insideSecond)
+                        {
+                            var insideThird = Model.Where(p => p.ParentId == insideSecondItem.Id).ToList();
+                            <li>@insideSecondItem.Name - @insideSecondItem.StateType.Name </li>
+                            <br />
+                            <ul>
+                                @foreach (var insideThirdItem in insideThird)
+                                {
+                                    <li>@insideThirdItem.Name - @insideThirdItem.StateType.Name </li>
+                                    <br />
+                                }
+                            </ul>
+                        }
+                    </ul>
+                }
+            </ul>
+        }
+    }
+</ul>
+

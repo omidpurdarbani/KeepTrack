@@ -1,0 +1,130 @@
+﻿@model KeepTrack.Core.DTOs.UsersForAdminViewModel
+@{
+    ViewData["Title"] = "کاربران";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">لیست کاربران</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @if (!string.IsNullOrWhiteSpace(Request.QueryString["filterUsername"]) && !string.IsNullOrWhiteSpace(Request.QueryString["filterEmail"]))
+                {
+                    <p style="font-size: 20px; font-weight:bold "> نمایش نتایج برای : </p>
+                    <p style="font-size: 18px; font-weight:bold "> نام کاربری : @Request.QueryString["filterUsername"]</p>
+                    <p style="font-size: 18px; font-weight:bold ">ایمیل: @Request.QueryString["filterEmail"]</p>
+                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Users.Count</p>
+                }
+                else if (!string.IsNullOrWhiteSpace(Request.QueryString["filterUsername"]))
+                {
+                    <p style="font-size: 20px">نمایش نتایج برای  :</p>
+                    <p style="font-size: 18px; font-weight:bold "> نام کاربری : @Request.QueryString["filterUsername"]</p>
+                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Users.Count</p>
+                }
+                else if (!string.IsNullOrWhiteSpace(Request.QueryString["filterEmail"]))
+                {
+                    <p style="font-size: 20px">نمایش نتایج برای : </p>
+                    <p style="font-size: 18px; font-weight:bold "> ایمیل : @Request.QueryString["filterEmail"]</p>
+                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Users.Count</p>
+                }
+                else
+                {
+                    <p style="font-size: 20px; font-weight:bold ">نمایش نتایج</p>
+                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Users.Count</p>
+                }
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <div class="row" style="margin: 5px 0 0 0;">
+                            <form>
+                                <div class="col-sm-4 col-md-4">
+                                    <label style="width: 28%; font-size: 20px;margin: 2px 0 0 0; float: right;">نام :</label>
+                                    <input style="width: 70%; font-size: 17px;float: right;" type="text" name="filterUsername" value="@(ViewData["name"])" class="form-control" />
+                                </div>
+                                <div class="col-sm-5 col-md-5">
+                                    <label style="width: 15%; font-size: 20px; margin: 2px 0 0 0;float: right;">ایمیل :</label>
+                                    <input style="width: 70%; font-size: 17px;float: right;" type="text" name="filterEmail" value="@(ViewData["email"])" class="form-control" />
+
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <button style="width: 40%;float: right;margin: -2px 0 0 10px; font-size: 18px" type="submit" class="btn btn-github btn-info">
+                                        جستجو
+                                    </button>
+                                    <a asp-page="Index" style="width: 40%;float: right;margin: -2px 0 0 10px; font-size: 18px" class="btn btn-default">
+                                        ریست
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                        <hr />
+                        <div class="col-md-12" style="margin: 10px 0 15px 0">
+                            <a href="/admin/users/create" style="font-size: 2rem" class="btn btn-info">
+                                افزودن کاربر جدید
+                            </a>
+                            <a href="/admin/users/deleted" style="font-size: 2rem;margin-right: 0.5vw" class="btn btn-danger">
+                                نمایش کاربران حذف شده
+                            </a>
+                        </div>
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info" style="font-size: 18px">
+                            <thead>
+                                <tr>
+                                    <th>نام و نام خانوادگی</th>
+                                    <th>ایمیل</th>
+                                    <th>نقش</th>
+                                    <th>دستورات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var user in Model.Users)
+                                {
+                                    <tr>
+                                        <td>@user.User.Name</td>
+                                        <td>@user.User.Email</td>
+                                        <td>@user.RoleName</td>
+                                        <td>
+                                            <a href="/admin/users/edit?userid=@user.User.Id" style="font-size:18px" class="btn btn-warning btn-sm">
+                                                ویرایش
+                                            </a>
+                                            <a href="/admin/users/delete?userid=@user.User.Id" style="font-size:18px" class="btn btn-danger btn-sm">
+                                                حذف
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table><div class="row">
+                            <div class="col-sm-6">
+                                <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+                                    <ul class="pagination">
+                                        @{
+                                            var pageTotal = Model.PageCount;
+                                            var counter = 1;
+                                        }
+                                        @while(pageTotal>0)
+                                        {
+                                            <li class="paginate_button @(counter == Model.CurrentPage ? "active" : "")" aria-controls="dataTables-example" tabindex="0">
+                                                <a href="/admin/users?pageId=@counter">@counter</a>
+                                            </li>
+                                            pageTotal-=10;
+                                            counter++;
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

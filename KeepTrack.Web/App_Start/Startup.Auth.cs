@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using KeepTrack.Core.Services.Services;
+using KeepTrack.DataLayer.Context;
+using KeepTrack.DataLayer.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using KeepTrack.DataLayer.Models;
 using System;
 
 
