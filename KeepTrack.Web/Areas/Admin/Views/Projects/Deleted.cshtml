@@ -1,11 +1,11 @@
-﻿@model KeepTrack.Core.DTOs.UsersForAdminViewModel
+﻿@model KeepTrack.Core.DTOs.ProjectsForAdminViewModel
 @{
-    ViewData["Title"] = "کاربران حذف شده";
+    ViewData["Title"] = "پروژه های حذف شده";
 }
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">لیست کاربران حذف شده</h1>
+        <h1 class="page-header">لیست پروژه های حذف شده</h1>
     </div>
 </div>
 
@@ -13,29 +13,29 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                @if (!string.IsNullOrWhiteSpace(Request.QueryString["filterUsername"]) && !string.IsNullOrWhiteSpace(Request.QueryString["filterEmail"]))
+                @if (!string.IsNullOrWhiteSpace(Request.QueryString["filterUsername"]) && !string.IsNullOrWhiteSpace(Request.QueryString["filterName"]))
                 {
                     <p style="font-size: 20px; font-weight:bold "> نمایش نتایج برای : </p>
-                    <p style="font-size: 18px; font-weight:bold "> نام کاربری : @Request.QueryString["filterUsername"]</p>
-                    <p style="font-size: 18px; font-weight:bold ">ایمیل: @Request.QueryString["filterEmail"]</p>
-                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Users.Count</p>
+                    <p style="font-size: 18px; font-weight:bold "> نام کاربر : @Request.QueryString["filterUsername"]</p>
+                    <p style="font-size: 18px; font-weight:bold "> نام : @Request.QueryString["filterName"]</p>
+                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Projects.Count</p>
                 }
                 else if (!string.IsNullOrWhiteSpace(Request.QueryString["filterUsername"]))
                 {
                     <p style="font-size: 20px">نمایش نتایج برای  :</p>
-                    <p style="font-size: 18px; font-weight:bold "> نام کاربری : @Request.QueryString["filterUsername"]</p>
-                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Users.Count</p>
+                    <p style="font-size: 18px; font-weight:bold "> نام کاربر : @Request.QueryString["filterUsername"]</p>
+                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Projects.Count</p>
                 }
-                else if (!string.IsNullOrWhiteSpace(Request.QueryString["filterEmail"]))
+                else if (!string.IsNullOrWhiteSpace(Request.QueryString["filterName"]))
                 {
                     <p style="font-size: 20px">نمایش نتایج برای : </p>
-                    <p style="font-size: 18px; font-weight:bold "> ایمیل : @Request.QueryString["filterEmail"]</p>
-                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Users.Count</p>
+                    <p style="font-size: 18px; font-weight:bold "> نام : @Request.QueryString["filterName"]</p>
+                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Projects.Count</p>
                 }
                 else
                 {
                     <p style="font-size: 20px; font-weight:bold ">نمایش نتایج</p>
-                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Users.Count</p>
+                    <p style="font-size: 18px; font-weight:bold ">تعداد : @Model.Projects.Count</p>
                 }
             </div>
             <!-- /.panel-heading -->
@@ -45,19 +45,19 @@
                         <div class="row" style="margin: 5px 0 0 0;">
                             <form>
                                 <div class="col-sm-4 col-md-4">
-                                    <label style="width: 28%; font-size: 20px;margin: 2px 0 0 0; float: right;">نام :</label>
-                                    <input style="width: 70%; font-size: 17px;float: right;" type="text" name="filterUsername" value="@(ViewData["name"])" class="form-control" />
+                                    <label style="width: 28%; font-size: 20px;margin: 2px 0 0 0; float: right;">نام کاربری :</label>
+                                    <input style="width: 70%; font-size: 17px;float: right;" type="text" name="filterUsername" value="@(ViewData["username"])" class="form-control" />
                                 </div>
                                 <div class="col-sm-5 col-md-5">
-                                    <label style="width: 15%; font-size: 20px; margin: 2px 0 0 0;float: right;">ایمیل :</label>
-                                    <input style="width: 70%; font-size: 17px;float: right;" type="text" name="filterEmail" value="@(ViewData["email"])" class="form-control" />
+                                    <label style="width: 15%; font-size: 20px; margin: 2px 0 0 0;float: right;">نام :</label>
+                                    <input style="width: 70%; font-size: 17px;float: right;" type="text" name="filterName" value="@(ViewData["name"])" class="form-control" />
 
                                 </div>
                                 <div class="col-sm-3 col-md-3">
                                     <button style="width: 40%;float: right;margin: -2px 0 0 10px; font-size: 18px" type="submit" class="btn btn-github btn-info">
                                         جستجو
                                     </button>
-                                    <a asp-page="Index" style="width: 40%;float: right;margin: -2px 0 0 10px; font-size: 18px" class="btn btn-default">
+                                    <a href="/admin/projects/deleted" style="width: 40%;float: right;margin: -2px 0 0 10px; font-size: 18px" class="btn btn-default">
                                         ریست
                                     </a>
                                 </div>
@@ -65,35 +65,33 @@
                         </div>
                         <hr />
                         <div class="col-md-12" style="margin: 10px 0 15px 0">
-                            <a href="/admin/users/create" style="font-size: 2rem" class="btn btn-info">
-                                افزودن کاربر جدید
-                            </a>
-                            <a href="/admin/users/" style="font-size: 2rem;margin-right: 0.5vw" class="btn btn-success">
-                                نمایش کاربران
+                            <a href="/admin/projects" style="font-size: 2rem;margin-right: 0.5vw" class="btn btn-primary">
+                                نمایش پروژه ها
                             </a>
                         </div>
                         <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info" style="font-size: 18px">
                             <thead>
                                 <tr>
-                                    <th>نام و نام خانوادگی</th>
-                                    <th>ایمیل</th>
-                                    <th>نقش</th>
+                                    <th>نام</th>
+                                    <th>نام کاربر</th>
+                                    <th>نوع</th>
+                                    <th>وضعیت</th>
                                     <th>دستورات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var user in Model.Users)
+                                @foreach (var project in Model.Projects)
                                 {
                                     <tr>
-                                        <td>@user.User.Name</td>
-                                        <td>@user.User.Email</td>
-                                        <td>@user.RoleName</td>
+                                        <td>@project.Name</td>
+                                        <td>@project.ApplicationUser.Name</td>
+                                        <td>@project.ProjectType.Name</td>
+                                        <td>@project.StateType.Name</td>
                                         <td>
-                                            <a href="/admin/users/edit?userid=@user.User.Id" style="font-size:18px" class="btn btn-warning btn-sm">
-                                                ویرایش
+                                            <a href="/projects?projectId=@project.Id" style="font-size:18px" class="btn btn-warning btn-sm">
+                                                نمایش
                                             </a>
-                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-userId="@user.User.Id">افزودن پروژه</button>
-                                            <a href="/admin/users/restore?userid=@user.User.Id" style="font-size:18px" class="btn btn-success btn-sm">
+                                            <a href="/admin/projects/restore?projectId=@project.Id" style="font-size:18px" class="btn btn-success btn-sm">
                                                 بازگردانی
                                             </a>
                                         </td>

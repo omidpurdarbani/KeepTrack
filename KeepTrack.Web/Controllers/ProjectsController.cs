@@ -27,13 +27,16 @@ namespace KeepTrack.Web.Controllers
             return View(_projectService.GetInfoForUserProject(userId, projectId));
         }
 
+
         public ActionResult EditProject(string projectId)
         {
             if (_roleService.GetCurrentUserRoleId() == 1)
             {
                 ViewBag.admin = true;
             }
-            return PartialView(_projectService.GetInfoForEditUserProject(Int32.Parse(projectId)));
+
+            var model = _projectService.GetInfoForEditUserProject(Int32.Parse(projectId));
+            return PartialView(model);
         }
 
         [HttpPost]
@@ -47,7 +50,8 @@ namespace KeepTrack.Web.Controllers
                 Description = project.Description,
                 ProjectTypeId = projectTypeId,
                 StateTypeId = stateTypeId,
-                UserId = userId
+                UserId = userId,
+                Active = project.Active
             });
             return RedirectToAction("Index", "Projects", new { @projectId = project.Id });
         }

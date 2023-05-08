@@ -86,7 +86,7 @@
                             </a>
                         </li>
                     </ul>-->
-                    <!-- /.dropdown-messages -->
+                <!-- /.dropdown-messages -->
                 <!--</li>-->
                 <!-- /.dropdown -->
                 <!--<li class="dropdown">
@@ -165,7 +165,7 @@
                             </a>
                         </li>
                     </ul>-->
-                    <!-- /.dropdown-tasks -->
+                <!-- /.dropdown-tasks -->
                 <!--</li>-->
                 <!-- /.dropdown -->
                 <!--<li class="dropdown">
@@ -225,7 +225,7 @@
                             </a>
                         </li>
                     </ul>-->
-                    <!-- /.dropdown-alerts -->
+                <!-- /.dropdown-alerts -->
                 <!--</li>-->
                 <!-- /.dropdown -->
                 <li class="dropdown">
@@ -264,6 +264,9 @@
                         <li>
                             <a href="/admin/users"><i class="fa fa-dashboard fa-fw"></i> مدیریت کاربران</a>
                         </li>
+                        <li>
+                            <a href="/admin/projects"><i class="fa fa-dashboard fa-fw"></i> مدیریت پروژه ها</a>
+                        </li>
                         <!--<li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -274,7 +277,7 @@
                                     <a href="login.html">Login Page</a>
                                 </li>
                             </ul>-->
-                            <!-- /.nav-second-level -->
+                        <!-- /.nav-second-level -->
                         <!--</li>-->
                     </ul>
                     <!-- /#side-menu -->
@@ -284,15 +287,16 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-    <div id="page-wrapper">
-        <!-- /.row -->
-        @RenderBody()
-    </div>
+        <div id="page-wrapper">
+            <!-- /.row -->
+            @RenderBody()
+        </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
     <!-- Core Scripts - Include with every page -->
+    @RenderSection("scripts", false)
     <script src="/Content/adminassets/js/jquery-1.10.2.js"></script>
     <script src="/Content/adminassets/js/bootstrap.min.js"></script>
     <script src="/Content/adminassets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
@@ -306,7 +310,11 @@
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
     <script src="/Content/adminassets/js/demo/dashboard-demo.js"></script>
-    @RenderSection("scripts", false)
+
+
+
+
+
 </body>
 
 </html>

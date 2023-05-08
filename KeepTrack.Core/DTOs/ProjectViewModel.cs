@@ -107,6 +107,8 @@ namespace KeepTrack.Core.DTOs
         [DisplayName("دسته بندی")]
         public List<ProjectType> ProjectTypes { get; set; }
 
+        public bool Active { get; set; }
+
     }
 
     public class InsertTaskViewModel

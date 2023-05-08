@@ -158,7 +158,8 @@ namespace KeepTrack.Core.Services.Services
                     Name = p.Name,
                     UserId = p.UserId,
                     ProjectTypeId = p.ProjectType.Id,
-                    StateTypeId = p.StateType.Id
+                    StateTypeId = p.StateType.Id,
+                    Active = p.Active
                 }).SingleOrDefault();
             if (res != null)
             {
@@ -194,10 +195,12 @@ namespace KeepTrack.Core.Services.Services
             // Show item in page
             int skip = (pageId - 1) * take;
 
-            ProjectsForAdminViewModel list = new ProjectsForAdminViewModel();
-            list.CurrentPage = pageId;
-            list.PageCount = result.Count();
-            list.Projects = result.OrderBy(u => u.Id).Skip(skip).Take(take).ToList();
+            ProjectsForAdminViewModel list = new ProjectsForAdminViewModel
+            {
+                CurrentPage = pageId,
+                PageCount = result.Count(),
+                Projects = result.OrderBy(u => u.Id).Skip(skip).Take(take).ToList()
+            };
 
             return list;
         }
@@ -220,10 +223,12 @@ namespace KeepTrack.Core.Services.Services
             // Show item in page
             int skip = (pageId - 1) * take;
 
-            ProjectsForAdminViewModel list = new ProjectsForAdminViewModel();
-            list.CurrentPage = pageId;
-            list.PageCount = result.Count();
-            list.Projects = result.OrderBy(u => u.Id).Skip(skip).Take(take).ToList();
+            ProjectsForAdminViewModel list = new ProjectsForAdminViewModel
+            {
+                CurrentPage = pageId,
+                PageCount = result.Count(),
+                Projects = result.OrderBy(u => u.Id).Skip(skip).Take(take).ToList()
+            };
 
             return list;
         }
@@ -261,17 +266,27 @@ namespace KeepTrack.Core.Services.Services
                 }).SingleOrDefault();
         }
 
-        public void DeleteProject(Project project)
+        public void DeleteProject(int projectId)
         {
-            project.Active = false;
-            _context.Projects.AddOrUpdate(project);
+            var project = _context.Projects.SingleOrDefault(p => p.Id == projectId);
+            if (project != null)
+            {
+                project.Active = false;
+                _context.Projects.AddOrUpdate(project);
+            }
+
             _context.SaveChanges();
         }
 
-        public void RestoreProject(Project project)
+        public void RestoreProject(int projectId)
         {
-            project.Active = true;
-            _context.Projects.AddOrUpdate(project);
+            var project = _context.Projects.SingleOrDefault(p => p.Id == projectId);
+            if (project != null)
+            {
+                project.Active = true;
+                _context.Projects.AddOrUpdate(project);
+            }
+
             _context.SaveChanges();
         }
     }

@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -441,6 +442,10 @@
     <Content Include="Areas\Admin\Views\Users\Restore.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\Deleted.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\Restore.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -492,6 +497,7 @@
     <Content Include="Views\Projects\EditTask.cshtml" />
     <Content Include="Views\Projects\DeleteTask.cshtml" />
     <Content Include="Views\Projects\EditProject.cshtml" />
+    <Content Include="Areas\Admin\Views\Projects\Insert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

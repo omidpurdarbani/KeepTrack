@@ -34,13 +34,13 @@ namespace KeepTrack.Web.Areas.Admin.Controllers
         public ActionResult Index(int pageId = 1, string filterEmail = "", string filterUsername = "")
         {
 
-            if (!string.IsNullOrWhiteSpace(HttpContext.Request.QueryString["filterUsername"]))
+            if (!string.IsNullOrWhiteSpace(filterUsername))
             {
-                ViewData["name"] = HttpContext.Request.QueryString["filterUsername"];
+                ViewData["name"] = filterUsername;
             }
-            if (!string.IsNullOrWhiteSpace(HttpContext.Request.QueryString["filterEmail"]))
+            if (!string.IsNullOrWhiteSpace(filterEmail))
             {
-                ViewData["email"] = HttpContext.Request.QueryString["filterEmail"];
+                ViewData["email"] = filterEmail;
             }
             return View(UserService.GetUsers(10, pageId, filterEmail, filterUsername));
         }

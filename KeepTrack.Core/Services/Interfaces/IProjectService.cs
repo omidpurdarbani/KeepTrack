@@ -46,9 +46,9 @@ namespace KeepTrack.Core.Services.Interfaces
 
         RestoreOrDeleteProjectViewModel GetInfoForDeleteProject(int projectId);
 
-        void DeleteProject(Project project);
+        void DeleteProject(int projectId);
 
-        void RestoreProject(Project project);
+        void RestoreProject(int projectId);
 
     }
 }

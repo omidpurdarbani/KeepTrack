@@ -1,14 +1,13 @@
-﻿@model KeepTrack.Core.DTOs.EditUserProjectViewModel
+﻿@model KeepTrack.Core.DTOs.CreateProjectViewModel
 
 @{
-    ViewBag.Title = "ویرایش";
+    ViewBag.Title = "افزودن";
 }
 
-@using (Html.BeginForm("EditProject", "Projects", FormMethod.Post))
+@using (Html.BeginForm("Insert", "Projects", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <input type="hidden" name="Id" value="@Model.Id" />
-    <input type="hidden" name="Active" value="@Model.Active.ToString()" />
+    <input type="hidden" name="UserId" value="@Model.UserId" />
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -21,6 +20,9 @@
         </div>
     </div>
     <br />
+    <br />
+
+    <br />
     <div class="form-group">
         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -28,23 +30,25 @@
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>
+    <br /><br />
+
     <br />
     <div class="form-group">
         @Html.LabelFor(model => model.StateTypes, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
 
-            <select id="stateTypeId" name="stateTypeId">
+            <select id="projectStateId" name="projectStateId">
                 @foreach (var item in Model.StateTypes)
                 {
-                    <option value="@item.Id" @(item.Id == Model.StateTypeId ? "selected" : "")>@item.Name</option>
+                    <option value="@item.Id">@item.Name</option>
                 }
             </select>
 
             @Html.ValidationMessageFor(model => model.StateTypes, "", new { @class = "text-danger" })
         </div>
     </div>
-
     <br />
+    
 
     <div class="form-group">
         @Html.LabelFor(model => model.ProjectTypes, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -53,7 +57,7 @@
             <select id="projectTypeId" name="projectTypeId">
                 @foreach (var item in Model.ProjectTypes)
                 {
-                    <option value="@item.Id" @(item.Id == Model.ProjectTypeId ? "selected" : "")>@item.Name</option>
+                    <option value="@item.Id">@item.Name</option>
                 }
             </select>
 
@@ -61,35 +65,16 @@
         </div>
     </div>
 
-
-    if (ViewBag.admin != null)
-    {
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.Users, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-
-                <select id="userId" name="userId">
-                    @foreach (var item in Model.Users)
-                    {
-                        <option value="@item.Id" @(item.Id == Model.UserId ? "selected" : "")>@item.Name</option>
-                    }
-                </select>
-
-                @Html.ValidationMessageFor(model => model.ProjectTypes, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    }
-
-
+    <br />
     <br />
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="ویرایش" class="btn btn-success" />
-            <input type="button" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close" value="بستن" />
+            <input type="submit" value="افزودن" class="btn btn-success" />
         </div>
     </div>
 
+    <br />
+    
 }
 
